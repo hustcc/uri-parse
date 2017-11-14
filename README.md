@@ -42,10 +42,26 @@ import URI from 'uri-parse';
 const u = 'scheme://username:password@host:port/path?name=hustcc#fragment;ext=hello';
 
 const uri = new URI(u);
-// get the value
+// get the values
 const { schema, username, password, host, port, path, query, fragment, extension } = uri.all()
 
-// or 
+/*
+schema: 'scheme',
+username: 'username',
+password: 'password',
+host: 'host',
+port: 'port',
+path: 'path',
+query: {
+  name: 'hustcc'
+},
+fragment: 'fragment',
+extension: {
+  ext: 'hello'
+}
+*/
+
+// or get the properties of the object.
 const schema = url.schema;
 // ...
 // ...
