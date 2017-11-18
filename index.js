@@ -23,6 +23,18 @@ function URI(uri) {
   this.uri = uri;
   this._pos = 0;
 
+  // the instance has properties below:
+  //
+  // this.schema
+  // this.username
+  // this.password
+  // this.host
+  // this.port
+  // this.path
+  // this.query
+  // this.fragment
+  // this.extension
+
   this._parse();
 }
 
