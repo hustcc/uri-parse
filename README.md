@@ -43,7 +43,7 @@ const u = 'scheme://username:password@host:port/path?name=hustcc#fragment;ext=he
 
 const uri = new URI(u);
 // get the values
-const { schema, username, password, host, port, path, query, fragment, extension } = uri.all()
+const { schema, username, password, host, port, path, query, fragment, extension } = uri.all();
 
 /*
 schema: 'scheme',
@@ -65,6 +65,11 @@ extension: {
 const schema = url.schema;
 // ...
 // ...
+
+// also you can update the uri.
+// ...
+
+const uriString = uri.toURI();
 ```
 
 

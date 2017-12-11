@@ -1,6 +1,6 @@
 {
   "name": "uri-parse",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mini data-uri parser for nodejs and browser. No dependencies!",
   "main": "index.js",
   "scripts": {

@@ -214,6 +214,31 @@ describe('uri-parse', function() {
     });
   });
 
+  it(' - toURI', function() {
+    var uri = new URI('https://github.com/hustcc/uri-parse?from=test#/dev');
+    expect(
+      uri.all()
+    ).toEqual({
+      schema: 'https',
+      username: undefined,
+      password: undefined,
+      host: 'github.com',
+      port: undefined,
+      path: 'hustcc/uri-parse',
+      query: {
+        from: 'test'
+      },
+      fragment: '/dev',
+      extension: undefined
+    });
+
+    // update it.
+    uri.query['_test'] = 'abc';
+    expect(
+      uri.toURI()
+    ).toBe('https://github.com/hustcc/uri-parse?from=test&_test=abc#/dev');
+  });
+
   it(' - others', function() {
     expect(
       new URI('scheme://username:password@host:port/#fragment').all()

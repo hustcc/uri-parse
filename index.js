@@ -74,6 +74,25 @@ URI.prototype.all = function() {
   };
 };
 
+URI.prototype.toURI = function() {
+  var uri = '', _t;
+  uri += this.schema + '://';
+  uri += this.username && this.password ? this.username + ':' + this.password + '@' : '';
+  uri += this.host;
+  uri += this.port ? ':' + this.port : '';
+  uri += this.path ? '/' + this.path : '';
+
+  _t = this._stringifyQuery(this.query);
+  uri += _t ? '?' + _t : '';
+
+  uri += this.fragment ? '#' + this.fragment : '';
+
+  _t = this._stringifyQuery(this.extension);
+  uri += _t ? ':' + _t : '';
+
+  return uri;
+};
+
 URI.prototype._parseQuery = function(query) {
   var qs = query.split('&'),
     len = qs.length,
@@ -85,6 +104,16 @@ URI.prototype._parseQuery = function(query) {
   }
   return r;
 };
+
+URI.prototype._stringifyQuery = function(query) {
+  if (!query) return '';
+  var q = [];
+  Object.keys(query).forEach(function(key) {
+    q.push(key + '=' + (query[key] ? query[key] : ''));
+  });
+  return q.join('&');
+};
+
 
 URI.prototype._parse = function() {
   var i = 0;
