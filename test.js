@@ -233,10 +233,17 @@ describe('uri-parse', function() {
     });
 
     // update it.
-    uri.query['_test'] = 'abc';
+    uri.query['_test1'] = 'abc';
+    uri.query['_test2'] = undefined;
     expect(
       uri.toURI()
-    ).toBe('https://github.com/hustcc/uri-parse?from=test&_test=abc#/dev');
+    ).toBe('https://github.com/hustcc/uri-parse?from=test&_test1=abc&_test2=#/dev');
+
+    // full test
+    var fullUri = 'scheme://username:password@host:port/path?name=hustcc#fragment;ext=hello';
+    expect(
+      new URI(fullUri).toURI()
+    ).toBe(fullUri);
   });
 
   it(' - others', function() {

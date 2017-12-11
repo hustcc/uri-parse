@@ -88,7 +88,7 @@ URI.prototype.toURI = function() {
   uri += this.fragment ? '#' + this.fragment : '';
 
   _t = this._stringifyQuery(this.extension);
-  uri += _t ? ':' + _t : '';
+  uri += _t ? ';' + _t : '';
 
   return uri;
 };
