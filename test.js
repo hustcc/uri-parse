@@ -239,6 +239,21 @@ describe('uri-parse', function() {
       uri.toURI()
     ).toBe('https://github.com/hustcc/uri-parse?from=test&_test1=abc&_test2=#/dev');
 
+    uri.path = '';
+    expect(
+      uri.toURI()
+    ).toBe('https://github.com?from=test&_test1=abc&_test2=#/dev');
+
+    uri.query = undefined;
+    expect(
+      uri.toURI()
+    ).toBe('https://github.com#/dev');
+
+    uri.fragment = '';
+    expect(
+      uri.toURI()
+    ).toBe('https://github.com');
+
     // full test
     var fullUri = 'scheme://username:password@host:port/path?name=hustcc#fragment;ext=hello';
     expect(
