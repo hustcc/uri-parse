@@ -67,8 +67,10 @@ const schema = url.schema;
 // ...
 
 // also you can update the uri.
+uri.query['p'] = 'testQuery';
 // ...
 
+// get the new url
 const uriString = uri.toURI();
 ```
 

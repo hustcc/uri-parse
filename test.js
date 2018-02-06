@@ -259,6 +259,18 @@ describe('uri-parse', function() {
     expect(
       new URI(fullUri).toURI()
     ).toBe(fullUri);
+
+    // http url
+    var url = 'http://www.atool.org/test.htm?id=hustcc&actionType=edit#/?_k=12345';
+    expect(
+      new URI(url).toURI()
+    ).toBe(url);
+
+    var u = new URI(url);
+    u.query['f'] = 'newQuery';
+    expect(
+      u.toURI()
+    ).toBe('http://www.atool.org/test.htm?id=hustcc&actionType=edit&f=newQuery#/?_k=12345');
   });
 
   it(' - others', function() {
