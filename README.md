@@ -37,41 +37,58 @@ var URI = require('uri-parse'); // ES5 with npm
 
 ## 2. Usage
 
+ - `uri.all()`: parse uri information.
+
 ```js
 import URI from 'uri-parse';
+
 const u = 'scheme://username:password@host:port/path?name=hustcc#fragment;ext=hello';
 
 const uri = new URI(u);
-// get the values
+
 const { schema, username, password, host, port, path, query, fragment, extension } = uri.all();
 
 /*
-schema: 'scheme',
-username: 'username',
-password: 'password',
-host: 'host',
-port: 'port',
-path: 'path',
-query: {
-  name: 'hustcc'
-},
-fragment: 'fragment',
-extension: {
-  ext: 'hello'
+{
+  schema: 'scheme',
+  username: 'username',
+  password: 'password',
+  host: 'host',
+  port: 'port',
+  path: 'path',
+  query: {
+    name: 'hustcc'
+  },
+  fragment: 'fragment',
+  extension: {
+    ext: 'hello'
+  }
 }
 */
 
-// or get the properties of the object.
+// or get the properties of the instance.
 const schema = url.schema;
-// ...
-// ...
+```
+
+ - `uri.toURI()`: modify and generate uri string.
+
+
+```js
+import URI from 'uri-parse';
+
+const u = 'http://www.atool.org/path?name=hustcc#fragment;ext=hello';
+
+const uri = new URI(u);
 
 // also you can update the uri.
-uri.query['p'] = 'testQuery';
-// ...
+uri.query = {
+  ...uri.query,
+  p: 'testQuery', // add a query parameter.
+};
 
 // get the new url
 const uriString = uri.toURI();
+// got 'http://www.atool.org/path?name=hustcc&p=testQuery#fragment;ext=hello';
 ```
 
 
