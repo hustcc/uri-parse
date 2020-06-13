@@ -128,7 +128,7 @@ URI.prototype._parse = function() {
   // 2. user:pass
   if (this.uri.indexOf('@', this._pos) !== -1) {
     this._skip('@');
-    const up = this._sub(i).split(':');
+    var up = this._sub(i).split(':');
     if (up.length !== 2) throw new Error('username and password must be paired.');
     this.username = up[0];
     this.password = up[1];
@@ -139,7 +139,7 @@ URI.prototype._parse = function() {
 
   // 3. host:port
   this._skip('/?#;');
-  const hp = this._sub(i).split(':');
+  var hp = this._sub(i).split(':');
   this.host = hp[0];
   this.port = hp[1];
   i = this._pos;

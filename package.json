@@ -1,8 +1,11 @@
 {
   "name": "uri-parse",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Mini data-uri parser for nodejs and browser. No dependencies!",
   "main": "index.js",
+  "files": [
+    "index.js"
+  ],
   "scripts": {
     "coverage": "nyc npm test && nyc report --reporter=lcov",
     "test": "mocha test.js",

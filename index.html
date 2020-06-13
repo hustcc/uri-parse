@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>uri-parse: Mini data-uri parser for nodejs and browser. No dependencies!</title>
+  <meta name="keywords" content="uri-parse, uri, data-uri" />
+  <meta name="description" content="Mini data-uri parser for nodejs and browser. No dependencies!" />
+  <style type="text/css">
+  body {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  pre {
+    background-color: #f6dcd7;
+    padding: 10px 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  pre.strong {
+    font-weight: bold;
+  }
+  form, form textarea {
+    width: 100%;
+  }
+  </style>
+</head>
+<body>
+  <h1> uri-parse </h1>
+  <p>
+    Project <a href="https://github.com/hustcc/uri-parse">uri-parse</a>: Mini data-uri parser for nodejs and browser. No dependencies!
+  </p>
+
+  <script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- sorry for ad -->
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-7292810486004926"
+       data-ad-slot="7806394673"
+       data-ad-format="auto"></ins>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+  <form>
+    <textarea rows='5' id='input'>https://atool.vip/diff?name=hustcc#fragment;ext=hello</textarea>
+    <br />
+    <input type='button' onclick='parse()' value='Encode morse code' />
+  </form>
+  <pre id='result'></pre>
+
+  <hr />
+
+  <p>
+    The code of uri-parse hosted on Github, click <a href="https://github.com/hustcc/uri-parse">here</a>. Welcome to issue or pull request.
+  </p>
+  <script type="text/javascript">
+    function URI(t){this.uri=t,this._pos=0,this._parse()}URI.prototype._end=function(){return this._pos>=this.uri.length},URI.prototype._next=function(){return this.uri[this._pos+=1]},URI.prototype._current=function(){return this.uri[this._pos]},URI.prototype._skip=function(t){if(t)for(;-1===t.indexOf(this._next())&&!this._end(););else this._pos=this.uri.length},URI.prototype._sub=function(t){return this.uri.substring(t,this._pos)},URI.prototype.all=function(){return{schema:this.schema,host:this.host,port:this.port,username:this.username,password:this.password,path:this.path,query:this.query,fragment:this.fragment,extension:this.extension}},URI.prototype.toURI=function(){var t,s="";return s+=this.schema+"://",s+=this.username&&this.password?this.username+":"+this.password+"@":"",s+=this.host,s+=this.port?":"+this.port:"",s+=this.path?"/"+this.path:"",s+=(t=this._stringifyQuery(this.query))?"?"+t:"",s+=this.fragment?"#"+this.fragment:"",s+=(t=this._stringifyQuery(this.extension))?";"+t:""},URI.prototype._parseQuery=function(t){for(var s,i=t.split("&"),r=i.length,h={},e=0;e<r;e++)(s=i[e].split("="))[0]&&(h[s[0]]=s[1]);return h},URI.prototype._stringifyQuery=function(s){if(!s)return"";var i=[];return Object.keys(s).forEach(function(t){i.push(t+"="+(s[t]?s[t]:""))}),i.join("&")},URI.prototype._parse=function(){var t=0,s=this.uri.indexOf("://");if(-1===s)throw new Error('scheme should followed by "://".');if(this._pos=s,this.schema=this._sub(t),this._pos=s+3,t=this._pos,-1!==this.uri.indexOf("@",this._pos)){this._skip("@");var i=this._sub(t).split(":");if(2!==i.length)throw new Error("username and password must be paired.");this.username=i[0],this.password=i[1],this._next(),t=this._pos}this._skip("/?#;");var r=this._sub(t).split(":");this.host=r[0],this.port=r[1],t=this._pos,"/"===this._current()&&(this._skip("?#;"),this.path=this._sub(t+1),t=this._pos),"?"===this._current()&&(this._skip("#;"),this.query=this._parseQuery(this._sub(t+1)),t=this._pos),"#"===this._current()&&(this._skip(";"),this.fragment=this._sub(t+1),t=this._pos),";"===this._current()&&(this._skip(),this.extension=this._parseQuery(this._sub(t+1)))};
+
+    function $_(id) {
+      return document.getElementById(id);
+    }
+
+    function parse() {
+      $_('result').innerHTML = JSON.stringify(new URI($_('input').value).all(), '', 2);
+    }
+
+    parse();
+  </script>
+</body>
+</html>

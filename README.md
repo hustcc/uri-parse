@@ -76,7 +76,7 @@ const schema = url.schema;
 ```js
 import URI from 'uri-parse';
 
-const u = 'http://www.atool.org/path?name=hustcc#fragment;ext=hello';
+const u = 'https://atool.vip/path?name=hustcc#fragment;ext=hello';
 
 const uri = new URI(u);
 
@@ -88,7 +88,7 @@ uri.query = {
 
 // get the new url
 const uriString = uri.toURI();
-// got 'http://www.atool.org/path?name=hustcc&p=testQuery#fragment;ext=hello';
+// got 'https://atool.vip/path?name=hustcc&p=testQuery#fragment;ext=hello';
 ```
 
 
@@ -104,5 +104,3 @@ npm run test
 ## License
 
 MIT@[hustcc](https://github.com/hustcc).
-
-
